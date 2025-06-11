@@ -26,7 +26,7 @@ class SSDVTransmitter:
     FRAME_END = b'\xAA\x55'    # End pattern
     MAX_PAYLOAD_SIZE = 255     # SSDV packet size (max for single byte length field)
     MAX_RETRIES = 5            # Maximum retransmission attempts
-    ACK_TIMEOUT = 5.0          # Acknowledgment timeout in seconds (increased for batch ACK)
+    ACK_TIMEOUT = 25.0         # Acknowledgment timeout in seconds (increased for batch ACK)
     INTER_PACKET_DELAY = 0.1   # Delay between packets
     BATCH_SIZE = 100           # Number of packets to send before expecting ACK
     
