@@ -1,7 +1,7 @@
 import argparse
 from modules.encode_decode import encode_image, decode_ssdv
-from modules.send import send_ssdv_packets
-from modules.receive import receive_ssdv_packets
+from modules.transmit import SSDVTransmitter
+from modules.receive import SSDVReceiver
 from modules.convert_to_baseline import convert_to_baseline
 
 def main():
@@ -46,12 +46,22 @@ def main():
         print(f"Decoded {args.ssdv} to {args.output}")
 
     elif args.command == "send":
-        send_ssdv_packets(args.ssdv, args.port, args.baud)
-        print(f"Sent {args.ssdv} over {args.port} at {args.baud} baud")
+        transmitter = SSDVTransmitter(args.port, args.baud)
+        success = transmitter.send_ssdv_file(args.ssdv)
+        if success:
+            print(f"Successfully sent {args.ssdv} over {args.port} at {args.baud} baud")
+        else:
+            print(f"Failed to send {args.ssdv}")
+            exit(1)
 
     elif args.command == "recv":
-        receive_ssdv_packets(args.ssdv, args.port, args.baud)
-        print(f"Received SSDV packets on {args.port} saved to {args.ssdv}")
+        receiver = SSDVReceiver(args.port, args.baud)
+        success = receiver.receive_ssdv_file(args.ssdv)
+        if success:
+            print(f"Successfully received SSDV data on {args.port} saved to {args.ssdv}")
+        else:
+            print(f"Failed to receive SSDV data")
+            exit(1)
 
     elif args.command == "convert":
         convert_to_baseline(args.image, args.output)
