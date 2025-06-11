@@ -138,15 +138,15 @@ The tool uses a custom reliable transmission protocol with the following feature
 
 ```
 ssdv-piclink/
-├── main.py                # Main script for SSDV operations
-├── ssdv                   # SSDV command-line tool
+├── main.py                      # Main script for SSDV operations
+├── ssdv                         # SSDV command-line tool
 ├── modules/
-│   ├── convert_to_baseline.py  # Module for converting images to baseline JPEG
-│   ├── encode_decode.py          # Module for encoding and decoding SSDV files
-│   ├── receiver.py            # Module for receiving SSDV files
-│   └── transmitter.py         # Module for sending SSDV files
-├── LICENSE               # License file
-└── README.md            # Project documentation
+│   ├── convert_to_baseline.py   # Module for converting images to baseline JPEG
+│   ├── encode_decode.py         # Module for encoding and decoding SSDV files
+│   ├── receiver.py              # Module for receiving SSDV files
+│   └── transmitter.py           # Module for sending SSDV files
+├── LICENSE                      # License file
+└── README.md                    # Project documentation
 ```
 
 ## License
